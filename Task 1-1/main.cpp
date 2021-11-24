@@ -1,9 +1,9 @@
-#define _USE_MATH_DEFINES // for C++
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include <iomanip>
 #include <iostream>
 
-//using namespace std;
+using namespace std;
 
 /**
  * \brief Это функция выполняет вычисление по заданной формуле
@@ -11,7 +11,8 @@
  * \param y параметр y
  * \return значение функции
  */
-double getA(const double x, const double y, const double z);
+double paramA(const double x, const double y, const double z);
+
 /**
  * \brief Это функция выполняет вычисление по заданной формуле
  * \param x параметр х
@@ -19,7 +20,7 @@ double getA(const double x, const double y, const double z);
  * \param z параметр z
  * \return 0  значение функции
  */
-double getB(const double x, const double y, const double z);
+double paramB(const double x, const double y, const double z);
 
 /**
  * \brief Точка входа в программу
@@ -29,25 +30,21 @@ int main()
 {
     const auto x = 0.2;
     const auto y = 0.004;
-    const auto z = 1.1;
+    const auto z = 1.1; // параметры x,y,z
 
-    const auto a = getA(x, y, z);
-    const auto b = getB(x, y, z);
+    const auto a = paramA(x, y, z); // расчёт параметра а
+    const auto b = paramB(x, y, z); // расчёт параметра b
 
-
-    std::cout << std::setprecision(9) << "x = " << x << " y = " << y << " z = " << z
-        << " a = " << a << " b = " << b << std::endl;
+    cout << " a = " << a << " b = " << b << endl;
     return 0;
 }
 
-
-
-double getA(const double x, const double y, const double z)
+double paramA(const double x, const double y, const double z)
 {
-    return pow(sin(((x*x)+z)*((x*x)+z)*((x*x)+z)),3) - sqrt(x / y);
+    return pow(sin(((x * x) + z) * ((x * x) + z) * ((x * x) + z)), 3) - sqrt(x / y);
 }
 
-double getB(const double x, const double y, const double z)
+double paramB(const double x, const double y, const double z)
 {
     return ((x * x) / z) + cos((x + y) * (x + y) * (x + y));
 }
