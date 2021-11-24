@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES // for C++
+#define _USE_MATH_DEFINES
 
 #include <iostream>
 #include <cmath>
@@ -20,7 +20,7 @@ bool IsCalculated(const double x);
  * \param x Входной параметр - точка x.
  * \return Значение функции в точке x
  */
-double Calculation(const double x);
+double Function(const double x);
 
 /**
  * \brief Точка входа в программу.
@@ -28,36 +28,36 @@ double Calculation(const double x);
  */
 int main()
 {
-    const auto leftBound = 0.0;
-    const auto rightBound = 0.8;
-    const auto step = 0.05;
+    const auto left = 0.0;
+    const auto right = 0.8; // Границы промежутка
+    const auto step = 0.05; //Шаг функции
 
-    auto x = leftBound;
+    auto x = left;
     cout << "  x" << setw(15) << "y\n";
-    while ((x < rightBound) || (abs(x - rightBound) < step))
+    while ((x < right) || (abs(x - right) < step))
     {
         if (IsCalculated(x))
         {
-            const auto y = Calculation(x);
+            const auto y = Function(x);
             cout << setw(10) << setprecision(2) << x << setw(15)
                 << setprecision(5) << y << '\n';
         }
         else
         {
             cout << setw(10) << setprecision(2) << x << setw(15)
-                << "not defined \n";
+                << "error \n";
         }
         x += step;
     }
     return 0;
 }
 
-double Calculation(const double x)
+double Function(const double x)
 {
-    return tan(x) - (pow(tan(x), 3) / 3.0) + (pow(tan(x), 5) / 5.0) - (1.0 / 3.0);
+    return tan(x) - (pow(tan(x), 3) / 3.0) + (pow(tan(x), 5) / 5.0) - (1.0 / 3.0); // Расчёт функции
 }
 
 bool IsCalculated(const double x)
 {
     return x >= std::numeric_limits<double>::min();
-}
+} // Проверка, больше ли число минимума типа double, если да - функция работает
