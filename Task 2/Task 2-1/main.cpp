@@ -11,7 +11,7 @@ enum class mainChoice { month, day };
 /**
  * \brief Пользовательский выбор вывода названия месяца (значения от 1 до 12)
  */
-enum class months { Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec };
+enum class month { Jan = 1, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec };
 
 /**
  * \brief Пользовательский выбор вывода названия дня недели (значения от 1 до 7)
@@ -24,82 +24,81 @@ enum class days { Mon = 1, Tue, Wed, Thu, Fri, Sat, Sun };
  */
 int main()
 {
+	cout << "output: month (0) or day of the week (1)" << "\n";
+	int choice1;
+	cin >> choice1; // ввод первого выбора - показать месяц или день недели
 
-	cout << "What do you want to output: month (0) or day of the week (1)" << "\n";
-	int type;
-	cin >> type;
-
-	const auto choice = static_cast<mainChoice>(type);
+	const auto choice = static_cast<mainChoice>(choice1);
 	switch (choice)
 	{
 	case mainChoice::month:
 	{
-		cout << "Input number of month" << "\n";
-		int month;
-		cin >> month;
+		cout << "number of month" << "\n";
+		int months;
+		cin >> months;
 
-		const auto monthChoice = static_cast<months>(month);
+		const auto monthChoice = static_cast<month>(months); // в зависимости от введённого числа от 1 до 12 будет показан какой это месяц
 
 		switch (monthChoice)
 		{
-		case months::Jan:
+		case month::Jan:
 		{
-			cout << "This is January";
+			cout << "January";
 			break;
 		}
-		case months::Feb:
+		case month::Feb:
 		{
-			cout << "This is February";
+			cout << "February";
 			break;
 		}
-		case months::Mar:
+		case month::Mar:
 		{
-			cout << "This is March";
+			cout << "March";
 			break;
 		}
-		case months::Apr:
+		case month::Apr:
 		{
-			cout << "This is April";
+			cout << "April";
 			break;
 		}
-		case months::May:
+		case month::May:
 		{
-			cout << "This is May";
+			cout << "May";
 			break;
 		}
-		case months::Jun:
+		case month::Jun:
 		{
-			cout << "This is June";
+			cout << "June";
 			break;
 		}
-		case months::Jul:
+		case month::Jul:
 		{
-			cout << "This is July";
+			cout << "July";
 			break;
 		}
-		case months::Aug:
+		case month::Aug:
 		{
-			cout << "This is August";
+			cout << "August";
 			break;
 		}
-		case months::Sep:
+		case month::Sep:
 		{
-			cout << "This is September";
+			cout << "September";
 			break;
 		}
-		case months::Oct:
+		case month::Oct:
 		{
-			cout << "This is October";
+			cout << "October";
 			break;
 		}
-		case months::Nov:
+		case month::Nov:
 		{
-			cout << "This is November";
+			cout << "November";
 			break;
 		}
-		case months::Dec:
+		case month::Dec:
 		{
-			cout << "This is December";
+			cout << "December";
 			break;
 		}
 		}
@@ -107,47 +106,47 @@ int main()
 	}
 	case mainChoice::day:
 	{
-		cout << "Input number of day" << "\n";
+		cout << "number of day" << "\n";
 		int day;
 		cin >> day;
 
-		const auto dayChoice = static_cast<days>(day);
+		const auto dayChoice = static_cast<days>(day); // в зависимости от введённого номера дня недели от 1 до 7 будет показано название дня недели
 
 		switch (dayChoice)
 		{
 		case days::Mon:
 		{
-			cout << "This is Monday";
+			cout << "Monday";
 			break;
 		}
 		case days::Tue:
 		{
-			cout << "This is Tuesday";
+			cout << "Tuesday";
 			break;
 		}
 		case days::Wed:
 		{
-			cout << "This is Wednesday";
+			cout << "Wednesday";
 			break;
 		}
 		case days::Thu:
 		{
-			cout << "This is Thursday";
+			cout << "Thursday";
 			break;
 		}
 		case days::Fri:
 		{
-			cout << "This is Friday";
+			cout << "Friday";
 			break;
 		}
 		case days::Sat:
 		{
-			cout << "This is Saturday";
+			cout << "Saturday";
 			break;
 		}
 		case days::Sun:
 		{
-			cout << "This is Sunday";
+			cout << "Sunday";
 			break;
 		}
 		}
