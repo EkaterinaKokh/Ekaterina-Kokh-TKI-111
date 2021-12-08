@@ -16,6 +16,14 @@ using namespace std;
 bool IsCalculated(const double x);
 
 /**
+*\brief Проверка аргумента.
+* \param x Входной параметр - точка x.
+* \return true, если аргумент входит в одз.
+*/
+bool IsRight(const double x);
+
+
+/**
  * \brief Расчет функции в точке x.
  * \param x Входной параметр - точка x.
  * \return Значение функции в точке x
@@ -36,7 +44,7 @@ int main()
     cout << "  x" << setw(15) << "y\n";
     while ((x < right) || (abs(x - right) < step))
     {
-        if (IsCalculated(x))
+        if (IsCalculated(x) && IsRight(x))
         {
             const auto y = Function(x);
             cout << setw(10) << setprecision(2) << x << setw(15)
@@ -61,3 +69,10 @@ bool IsCalculated(const double x)
 {
     return x >= std::numeric_limits<double>::min();
 } // Проверка, больше ли число минимума типа double, если да - функция работает
+
+bool IsRight(const double x)
+{
+    bool check = false;
+    if (x != M_PI / 2) check = true;
+    return check;
+}
