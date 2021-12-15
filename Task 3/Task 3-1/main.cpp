@@ -20,14 +20,7 @@ bool IsCalculated(const double x);
 * \param x Входной параметр - точка x.
 * \return true, если аргумент входит в одз.
 */
-bool IsRight(const double x);
 
-
-/**
- * \brief Расчет функции в точке x.
- * \param x Входной параметр - точка x.
- * \return Значение функции в точке x
- */
 double Function(const double x);
 
 /**
@@ -44,7 +37,7 @@ int main()
     cout << "  x" << setw(15) << "y\n";
     while ((x < right) || (abs(x - right) < step))
     {
-        if (IsCalculated(x) && IsRight(x))
+        if (IsCalculated(x) 
         {
             const auto y = Function(x);
             cout << setw(10) << setprecision(2) << x << setw(15)
@@ -67,12 +60,6 @@ double Function(const double x)
 
 bool IsCalculated(const double x)
 {
-    return x >= std::numeric_limits<double>::min();
+    return abs(cos(x)) >= std::numeric_limits<double>::min();
 } // Проверка, больше ли число минимума типа double, если да - функция работает
 
-bool IsRight(const double x)
-{
-    bool check = false;
-    if (x != M_PI / 2) check = true;
-    return check;
-}
