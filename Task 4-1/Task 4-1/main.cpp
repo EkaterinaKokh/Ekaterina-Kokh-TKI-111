@@ -57,14 +57,14 @@ enum class Input
 * \param min Минимально возможное число
 * \param max Максимально возможное число
 **/
-void randomizeArray(int* array, const size_t size, const int min, const int max);
+void RandomizeArray(int* array, const size_t size, const int min, const int max);
 
 /**
 * \brief Ввод массива с клавиатуры
 * \param array Массив
 * \param size Размер массива
 **/
-void userInput(int* array, const size_t size);
+void UserInput(int* array, const size_t size);
 
 /**
 * \brief Конвертация массива строку вида {element_1, element_2, ... ,element_n}
@@ -72,7 +72,7 @@ void userInput(int* array, const size_t size);
 * \param size Размер массива
 * \param message Сообщение, которое будет выведено перед массивом
 **/
-string arrayToString(int* array, const size_t size, const string& message);
+string ArrayToString(int* array, const size_t size, const string& message);
 
 int main() {
 
@@ -98,14 +98,14 @@ int main() {
     {
     case Input::randomize:
     {
-        randomizeArray(array, size_array, min, max);
-        cout << arrayToString(array, size, "массив = ") << "\n";
+        RandomizeArray(array, size_array, min, max);
+        cout << ArrayToString(array, size, "массив = ") << "\n";
         break;
     }
     case Input::user:
     {
-        userInput(array, size_array);
-        cout << arrayToString(array, size, "массив = ") << "\n";
+        UserInput(array, size_array);
+        cout << ArrayToString(array, size, "массив = ") << "\n";
         break;
     }
     default:
@@ -122,7 +122,7 @@ int main() {
         cout << "не существует две пары соседних элементов с одинаковыми знаками\n";
 
     MinToAverage(array, size_array);
-    cout << arrayToString(array, size_array, "Измененный массив = ") << '\n';
+    cout << ArrayToString(array, size_array, "Измененный массив = ") << '\n';
 
     if (array != nullptr)
     {
@@ -131,7 +131,7 @@ int main() {
     }
 }
 
-void randomizeArray(int* array, const size_t size, const int min, const int max)
+void RandomizeArray(int* array, const size_t size, const int min, const int max)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -142,7 +142,7 @@ void randomizeArray(int* array, const size_t size, const int min, const int max)
 
 }
 
-void userInput(int* array, const size_t size)
+void UserInput(int* array, const size_t size)
 {
     for (size_t i = 0; i < size; i++)
     {
@@ -151,7 +151,7 @@ void userInput(int* array, const size_t size)
     }
 }
 
-string arrayToString(int* array, const size_t size, const string& message = "")
+string ArrayToString(int* array, const size_t size, const string& message = "")
 {
     stringstream str;
     str << message << "{" << array[0];
