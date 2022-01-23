@@ -19,7 +19,7 @@ size_t GetMin(const int* array, const size_t size);
 *\param array Массив
 *\param size Размер массива
 **/
-int GetAverage(const int* array, const size_t size);
+double GetAverage(const int* array, const size_t size);
 
 /**
 *\brief Замена минимального элемента массива на среднее арифметическое
@@ -84,7 +84,8 @@ int main() {
     cout << "Введите размер массива\n";
     size_t size;
     cin >> size;
-    int* array = new int[size];
+    size_t size_array = size;
+    int* array = new int[size_array];
 
     cout << "Выберите способ заполнения массива:\n" << "Случайные элементы - 1\n" << "Ручной ввод - 2\n";
 
@@ -97,13 +98,13 @@ int main() {
     {
     case Input::randomize:
     {
-        randomizeArray(array, size, min, max);
+        randomizeArray(array, size_array, min, max);
         cout << arrayToString(array, size, "массив = ") << "\n";
         break;
     }
     case Input::user:
     {
-        userInput(array, size);
+        userInput(array, size_array);
         cout << arrayToString(array, size, "массив = ") << "\n";
         break;
     }
@@ -113,17 +114,21 @@ int main() {
 
     cout << "Индексы элементов, значения которых больше предыдущих\n";
 
-    ShowIndex(array, size);
+    ShowIndex(array, size_array);
 
-    if (CheckElement(array, size))
+    if (CheckElement(array, size_array))
         cout << "существует две пары соседних элементов с одинаковыми знаками\n";
     else
         cout << "не существует две пары соседних элементов с одинаковыми знаками\n";
 
-    MinToAverage(array, size);
-    cout << arrayToString(array, size, "Измененный массив = ") << '\n';
+    MinToAverage(array, size_array);
+    cout << arrayToString(array, size_array, "Измененный массив = ") << '\n';
 
-    delete[] array;
+    if (array != nullptr)
+    {
+        delete[] array;
+        array = nullptr;
+    }
 }
 
 void randomizeArray(int* array, const size_t size, const int min, const int max)
@@ -173,8 +178,8 @@ size_t GetMin(int* array, size_t size) {
     return minIndex;
 }
 
-int GetAverage(int* array, size_t size) {
-    int average = 0;
+double GetAverage(int* array, size_t size) {
+    double average = 0;
     for (size_t i = 1; i < size; i++) {
         average += array[i];
     }
